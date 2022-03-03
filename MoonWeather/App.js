@@ -1,12 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>test</Text>
-      <Text></Text>
-      <StatusBar style="light" />
+      <StatusBar style='black' />
+      <View style={styles.city}>
+        <Text style={styles.cityName}>서울</Text>
+      </View>
+      <View style={styles.weather}>
+        <View style={styles.day}>
+          <Text style={styles.temp}>27</Text>
+          <Text style={styles.description}>Sunny</Text>
+        </View>
+      </View>
     </View>
   );
 }
@@ -14,12 +21,33 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "red",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: "tomato",
   },
-  text: {
-    fontSize: 28,
-    color: "white",
-  }
+  city: {
+    flex: 1,
+    backgroundColor: "tomato",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  cityName: {
+    color: "black",
+    fontSize: 68,
+    fontWeight: "500"
+  },
+  weather: {
+    flex: 3,
+  },
+  day: {
+    flex: 1,
+    alignItems: "center",
+    backgroundColor: "teal",
+  },
+  temp: {
+    marginTop: 50,
+    fontSize: 178,
+  },
+  description: {
+    marginTop: -30,
+    fontSize: 60,
+  },
 });
