@@ -29,30 +29,42 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style='black' />
-      <View style={styles.city}>
-        <Text style={styles.cityName}>{city}</Text>
-      </View>
-      <ScrollView
-        pagingEnabled
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.weather}>
-        {days.length === 0 ? (
-          <View style={styles.day}>
-            <ActivityIndicator color="white" style={{ marginTop: 10 }} size="large" />
+      {!ok ?
+        (
+          <View style={styles.noLocation}>
+            <Text>We need your loacation ㅠㅠ</Text>
           </View>
-        ) : (
-          days.map((day, index) => (
-            <View key={index} style={styles.day} >
-              <Text style={styles.temp}>
-                {parseFloat(day.temp.day).toFixed(1)}
-              </Text>
-              <Text style={styles.description}>{day.weather[0].main}</Text>
-              <Text style={styles.tinyText}>{day.weather[0].description}</Text>
+        )
+        :
+        (
+          <>
+            <View style={styles.city}>
+              <Text style={styles.cityName}>{city}</Text>
             </View>
-          ))
-        )}
-      </ScrollView>
+            <ScrollView
+              pagingEnabled
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.weather}>
+              {days.length === 0 ? (
+                <View style={styles.day}>
+                  <ActivityIndicator color="white" style={{ marginTop: 10 }} size="large" />
+                </View>
+              ) : (
+                days.map((day, index) => (
+                  <View key={index} style={styles.day} >
+                    <Text style={styles.temp}>
+                      {parseFloat(day.temp.day).toFixed(1)}
+                    </Text>
+                    <Text style={styles.description}>{day.weather[0].main}</Text>
+                    <Text style={styles.tinyText}>{day.weather[0].description}</Text>
+                  </View>
+                ))
+              )}
+            </ScrollView>
+          </>
+        )
+      }
     </View >
   );
 }
@@ -61,6 +73,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "tomato",
+  },
+  noLocation: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
   },
   city: {
     flex: 1,
