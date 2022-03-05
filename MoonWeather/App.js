@@ -7,6 +7,10 @@ const { width: SCREEN_WIDTH } = Dimensions.get("window");
 
 const API_KEY = "f4ea50cdc8bc01a38d159901b1d86f81";
 
+const icons = {
+  "Clouds": 
+}
+
 export default function App() {
   const [city, setCity] = useState("Loading...");
   const [days, setDays] = useState([]);
@@ -52,7 +56,7 @@ export default function App() {
                 </View>
               ) : (
                 days.map((day, index) => (
-                  <View key={index} style={styles.day} >
+                  <View key={index} style={styles.day}>
                     <Text style={styles.temp}>
                       {parseFloat(day.temp.day).toFixed(1)}
                     </Text>
@@ -86,26 +90,30 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   cityName: {
-    color: "black",
-    fontSize: 68,
+    color: "white",
+    fontSize: 58,
     fontWeight: "500"
   },
   weather: {
   },
   day: {
     width: SCREEN_WIDTH,
-    alignItems: "center",
+    alignItems: "flex-start",
+    paddingHorizontal: 20,
   },
   temp: {
+    color: "white",
     marginTop: 50,
     fontWeight: "500",
     fontSize: 150,
   },
   description: {
+    color: "white",
     marginTop: -30,
     fontSize: 50,
   },
   tinyText: {
-    fontSize: 20
+    color: "white",
+    fontSize: 20,
   }
 });
